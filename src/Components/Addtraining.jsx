@@ -48,7 +48,7 @@ export default function Addtraining(props){
                     <DialogContent>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker 
-                            onChange={(newValue) => {setNewTraining({...newTraining, date: newValue.$d.toISOString()});}}
+                            onChange={(newValue) => {setTraining({...training, date: newValue.$d.toISOString()});}}
                             label="Training Date and Time"
                             sx={{width: "100%", marginTop: "15px"}}
                         />
