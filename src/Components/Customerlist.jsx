@@ -4,9 +4,8 @@ import ReactTable from 'react-table';
 import Editcustomer from './Editcustomer';
 import Addcustomer from './Addcustomer';
 import Button from "@material-ui/core/Button";
-import { CSVLink } from "react-csv";
 
-export default function Traininglist() {
+export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -52,30 +51,6 @@ export default function Traininglist() {
       .catch(err => console.log(err));
   }
 
-  const convertToCSV = () => {
-    const csvData = customers.map(customer => ({
-      Firstname: customer.firstname,
-      Lastname: customer.lastname,
-      Address: customer.streetaddress,
-      "Postal Code": customer.postcode,
-      City: customer.city,
-      Email: customer.email,
-      Phone: customer.phone
-    }));
-  
-  
-    const headers = [
-      { label: "Name", key: "firstname" },
-      { label: "Surname", key: "lastname" },
-      { label: "Address", key: "streetaddress" },
-      { label: "Postal Code", key: "postcode" },
-      { label: "City", key: "city" },
-      { label: "Email", key: "email" },
-      { label: "Phone", key: "phone" }
-    ];
-  
-    return [headers, ...csvData.map(item => Object.values(item))];
-  };
 
   const columns = [
     {
@@ -133,17 +108,7 @@ export default function Traininglist() {
       <div style={{ marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>
         <Addcustomer saveCustomer={saveCustomers} />
       </div>
-      <div style={{ marginTop: '10px', marginBottom: '20px', marginLeft: '20px' }}>
-        <Button variant="outline" color="Primary">
-          <CSVLink
-            data={convertToCSV()}
-            filename={"customers.csv"}
-            target="_blank"
-          >
-            Export to CSV
-          </CSVLink>
-        </Button>
-      </div>
+      
       <div>
         <ReactTable
           filterable={true}

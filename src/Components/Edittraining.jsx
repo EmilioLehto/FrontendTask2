@@ -15,7 +15,7 @@ export default function Edittraining(props){
 
 const[open, setOpen] = useState(false);
 const[training, setTraining] = useState({
-    date: '', duration: '', activity: '', customer: ''
+    date: '', duration: '', activity: '', customer: '',
 });
 
 

@@ -6,6 +6,9 @@ import  Dialog  from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
 export default function Addtraining(props){
@@ -43,15 +46,13 @@ export default function Addtraining(props){
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New Training</DialogTitle>
                     <DialogContent>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            name="date"
-                            value={training.date}
-                            onChange={e => handleInputChange(e)}
-                            label="Date"
-                            fullWidth
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker 
+                            onChange={(newValue) => {setNewTraining({...newTraining, date: newValue.$d.toISOString()});}}
+                            label="Training Date and Time"
+                            sx={{width: "100%", marginTop: "15px"}}
                         />
+                    </LocalizationProvider>
                         <TextField
                             margin="dense"
                             name="duration"

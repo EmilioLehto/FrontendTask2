@@ -7,13 +7,13 @@ import Edittraining from "./Edittraining";
 import dayjs from "dayjs";
 
 
-export default function Customerlist() {
+export default function Traininglist() {
   const[training, setTraining] = useState([]);
   const[customer, setCustomer] = useState([]);
  
 
   useEffect(() => {
-    fetchData();
+    fetchData(); 
     fetchCustomerList();
   }, []);
 
@@ -147,5 +147,3 @@ const deleteCustomer = (link) => {
 
 
   }
-
-  
